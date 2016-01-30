@@ -52,6 +52,11 @@ public class RobotMap {
         driveTrainRobotDrive = new RobotDrive(driveTrainFrontLeftMotor, driveTrainRearLeftMotor,
               driveTrainFrontRightMotor, driveTrainRearRightMotor);
         
+        driveTrainRearRightMotor.setInverted(true);
+        driveTrainFrontRightMotor.setInverted(true);
+        driveTrainRearLeftMotor.setInverted(true);
+        driveTrainFrontLeftMotor.setInverted(true);
+        
         driveTrainRobotDrive.setSafetyEnabled(true);
         driveTrainRobotDrive.setExpiration(0.1);
         driveTrainRobotDrive.setSensitivity(0.5);

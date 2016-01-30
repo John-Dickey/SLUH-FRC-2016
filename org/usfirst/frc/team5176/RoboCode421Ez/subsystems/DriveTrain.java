@@ -14,6 +14,7 @@ package org.usfirst.frc.team5176.RoboCode421Ez.subsystems;
 import org.usfirst.frc.team5176.RoboCode421Ez.RobotMap;
 import org.usfirst.frc.team5176.RoboCode421Ez.commands.*;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -52,6 +53,9 @@ public class DriveTrain extends Subsystem {
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
+    }
+    public void dankMemes(Joystick dick) {
+    	robotDrive.arcadeDrive(dick);
     }
 }
 

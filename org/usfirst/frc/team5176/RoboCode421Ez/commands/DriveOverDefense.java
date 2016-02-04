@@ -39,19 +39,22 @@ public class DriveOverDefense extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(2000);//gotta go slow
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.driveTrain.driveSlowly();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrain.stopMoving();
     }
 
     // Called when another command which requires one or more of the same

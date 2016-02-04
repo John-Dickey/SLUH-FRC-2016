@@ -60,5 +60,24 @@ public class DriveTrain extends Subsystem {
     {
     	robotDrive.arcadeDrive(stick);
     }
+    public void set(double fl, double rl, double fr, double rr)
+    {
+    	frontLeftMotor.set(fl);
+    	rearLeftMotor.set(rl);
+    	frontRightMotor.set(fr);
+    	rearRightMotor.set(rr);
+    }
+    public void freakingFloorIt()
+    {
+    	this.set(1, 1, 1, 1);
+    }
+    public void stopMoving()
+    {
+    	this.set(0, 0, 0, 0);
+    }
+    public void driveSlowly()
+    {
+    	this.set(.5, .5, .5, .5);
+    }
 }
 

@@ -15,6 +15,8 @@ import org.usfirst.frc.team5176.RoboCode421Ez.RobotMap;
 import org.usfirst.frc.team5176.RoboCode421Ez.commands.*;
 
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Relay.Direction;
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 
@@ -49,6 +51,20 @@ public class PickupArms extends Subsystem {
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
+    }
+    //No idea if this is the right direction \_('~')_/
+    public void spinArmsIn() {
+    	leftArm.set(Value.kForward);
+    	rightArm.set(Value.kForward);
+    }
+    public void spinArmsOut() {
+    	leftArm.set(Value.kReverse);
+    	rightArm.set(Value.kReverse);
+    }
+    public void stopSpinning()
+    {
+    	leftArm.set(Value.kOff);
+    	rightArm.set(Value.kOff);
     }
 }
 

@@ -13,6 +13,7 @@ package org.usfirst.frc.team5176.RoboCode421Ez.commands;
 
 import org.usfirst.frc.team5176.RoboCode421Ez.Robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -38,15 +39,28 @@ public class CameraSwitch extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.server = CameraServer.getInstance();
+    	setTimeout(50);
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(Robot.currentCamera == "cam0")
+    	{
+    		Robot.currentCamera = "cam1";
+    		Robot.server.startAutomaticCapture("cam1");
+    	}
+    	if(Robot.currentCamera == "cam1")
+    	{
+    		Robot.currentCamera = "cam0";
+    		Robot.server.startAutomaticCapture("cam0");
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true

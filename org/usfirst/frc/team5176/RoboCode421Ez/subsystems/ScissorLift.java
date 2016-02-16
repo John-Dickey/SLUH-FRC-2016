@@ -50,11 +50,11 @@ public class ScissorLift extends Subsystem {
     public void goingUp()
     {
     	//TODO Confirm Lift speed
-    	scissorMotor.set(1);
+    	scissorMotor.set(.5);
     }
     public void downWeGo()
     {
-    	scissorMotor.set(-1);
+    	scissorMotor.set(-.5);
     }
     public void stopTheMotors()
     {

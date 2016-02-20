@@ -17,6 +17,7 @@ import org.usfirst.frc.team5176.RoboCode421Ez.subsystems.*;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -124,8 +125,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        if(!server.isAutoCaptureStarted())//if the camera stops, make it work , pls ;~;
-        	server.startAutomaticCapture("cam0");
+      //  if(!server.isAutoCaptureStarted())//if the camera stops, make it work , pls ;~;
+        //	server.startAutomaticCapture("cam0");
         driveTrain.dankMemes(oi.pilotJoystick);//awesome arcade drive method name
         SmartDashboard.putNumber("Ultrasonic", RobotMap.driveTrainUltrasonicM.getRangeInches());
         SmartDashboard.putNumber("Ultrasonic", RobotMap.driveTrainUltrasonicL.getRangeInches());
@@ -153,5 +154,15 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        if(oi.coJoystick.getRawButton(1)) {
+        	RobotMap.theTrigger.set(Value.kForward);
+        	SmartDashboard.putString("Fire at Position", "Pos: " + RobotMap.catapultArmArmEncoder.pidGet() + "Dist: " + RobotMap.driveTrainUltrasonicM.getRangeInches());
+        }
+        if(oi.coJoystick.getRawButton(2)) {
+        	RobotMap.theTrigger.set(Value.kReverse);
+        }
+        if(!oi.coJoystick.getRawButton(2) && !oi.coJoystick.getRawButton(1))
+        	RobotMap.theTrigger.set(Value.kOff);
+        driveTrain.dankMemes(oi.pilotJoystick);
     }
 }

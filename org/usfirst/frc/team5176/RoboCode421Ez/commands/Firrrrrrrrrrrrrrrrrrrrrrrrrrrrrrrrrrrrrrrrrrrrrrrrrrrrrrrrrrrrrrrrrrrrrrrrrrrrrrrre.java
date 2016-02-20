@@ -1,15 +1,13 @@
 package org.usfirst.frc.team5176.RoboCode421Ez.commands;
 
-import org.usfirst.frc.team5176.RoboCode421Ez.commands.CatapultToPosition.RealPosition;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class GetReadyToRumble extends CommandGroup {
+public class Firrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre extends CommandGroup {
     
-    public  GetReadyToRumble() {
+    public  Firrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,8 +24,8 @@ public class GetReadyToRumble extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new CatapultToPosition(RealPosition.Unwind));
-    	addSequential(new PullTheClam());//TODO confirm timing
+    	addSequential(new CatapultToPosition(500));//TODO get real position
+    	addSequential(new PullTheClam());
     	addSequential(new ReleaseTheClam());
     }
 }

@@ -114,7 +114,7 @@ public class OI {
         SmartDashboard.putData("Reload", new Reload());
         SmartDashboard.putData("Scissors Up", new ScissorsUp());
         SmartDashboard.putData("Scissors Down", new ScissorsDown());
-        SmartDashboard.putData("Camera Switch", new CameraSwitch());
+       // SmartDashboard.putData("Camera Switch", new CameraSwitch());
         SmartDashboard.putData("Pickup Ball", new PickupBall());
         SmartDashboard.putData("Drive To Defense", new DriveToDefense());
         SmartDashboard.putData("Drive Over Defense", new DriveOverDefense());

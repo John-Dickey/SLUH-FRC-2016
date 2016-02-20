@@ -60,10 +60,17 @@ public class AutonomousCommandGroup extends CommandGroup {
     	
     	//This is the test autonomous command just to make sure that this bullshit works gooood
     	
-    	addSequential(new DriveToBall()); //Changed for test so it's a simple drive forward
+    	 //Changed for test so it's a simple drive forward
     	//Just cause I'm too lazy to make a new one
     	addSequential(new DriveToDefense());  //Changed for test so it's a simple drive backward
-    	
+    	addParallel(new SpinPickupArmsIn());
+    	addSequential(new LowerPickupArms());
+    	addParallel(new SpinPickupArmsIn());
+    	addSequential(new RaisePickupArms());
+    	addSequential(new SpinPickupArmsIn());
+    	addSequential(new TurnLeft());
+    	addSequential(new DriveToBall());
+    	addSequential(new Firrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre());
     	
  
     } 

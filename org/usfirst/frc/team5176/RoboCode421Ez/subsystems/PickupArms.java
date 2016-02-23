@@ -58,11 +58,11 @@ public class PickupArms extends Subsystem {
     //No idea if this is the right direction \_('~')_/
     public void spinArmsIn() {
     	leftArm.set(Value.kForward);
-    	rightArm.set(Value.kForward);
+    	rightArm.set(Value.kReverse);
     }
     public void spinArmsOut() {
     	leftArm.set(Value.kReverse);
-    	rightArm.set(Value.kReverse);
+    	rightArm.set(Value.kForward);
     }
     public void stopSpinning()
     {

@@ -18,12 +18,12 @@ public class ReleaseTheClam extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(Robot.ARBITRARY_COMMAND_LENGTH);
+    	setTimeout(.2);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.theTrigger.set(Value.kOff);
+    	RobotMap.theTrigger.set(Value.kReverse);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,6 +33,7 @@ public class ReleaseTheClam extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.theTrigger.set(Value.kOff);
     }
 
     // Called when another command which requires one or more of the same

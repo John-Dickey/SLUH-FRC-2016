@@ -44,7 +44,7 @@ public class RobotMap {
     public static Ultrasonic driveTrainUltrasonicL;
     
     public static SpeedController catapultArmCatapultMotor;
-    public static Encoder catapultArmArmEncoder;
+    public static AnalogInput catapultArmArmEncoder;
     public static Relay theTrigger;
     public static SpeedController pickupArmsVerticalArm;
     public static Relay pickupArmsLeftArm;
@@ -90,9 +90,8 @@ public class RobotMap {
         LiveWindow.addActuator("Catapult Arm", "Catapult Motor", (VictorSP) catapultArmCatapultMotor);
         //Change to analog input?
 
-        catapultArmArmEncoder = new Encoder(6, 7, false, EncodingType.k4X);
+        catapultArmArmEncoder = new AnalogInput(1);
         LiveWindow.addSensor("Catapult Arm", "Arm Encoder", catapultArmArmEncoder);
-        catapultArmArmEncoder.setDistancePerPulse(1.0);
         catapultArmArmEncoder.setPIDSourceType(PIDSourceType.kRate);
         theTrigger = new Relay(1);
         LiveWindow.addActuator("Catapult Arm", "Clamp", theTrigger);

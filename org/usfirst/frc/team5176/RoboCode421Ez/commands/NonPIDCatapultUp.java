@@ -1,29 +1,28 @@
 package org.usfirst.frc.team5176.RoboCode421Ez.commands;
 
 import org.usfirst.frc.team5176.RoboCode421Ez.Robot;
+import org.usfirst.frc.team5176.RoboCode421Ez.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class TurnLeft extends Command {
+public class NonPIDCatapultUp extends Command {
 
-    public TurnLeft() {
+    public NonPIDCatapultUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(.5);
-    	
+    	setTimeout(.1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.set(.5, 0);
+    	Robot.catapultArm.tighten();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,12 +32,12 @@ public class TurnLeft extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrain.kidRanIntoTheStreet();
+    	Robot.catapultArm.stopMotor();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    end();
     }
 }

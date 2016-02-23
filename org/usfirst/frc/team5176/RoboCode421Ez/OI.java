@@ -78,20 +78,20 @@ public class OI {
         //Free Buttons for Co-Pilot:
         extraButton = new JoystickButton(coJoystick, 12);
         extraButton.whileHeld(new ExtraCoPilotCommand());
-        switchButton = new JoystickButton(coJoystick, 11);
-        switchButton.whileHeld(new CameraSwitch());
+        //switchButton = new JoystickButton(coJoystick, 11);
+        //switchButton.whileHeld(new CameraSwitch());
         scissorsDownButton = new JoystickButton(coJoystick, 10);
         scissorsDownButton.whileHeld(new ScissorsDown());
         scissorsUpButton = new JoystickButton(coJoystick, 9);
         scissorsUpButton.whileHeld(new ScissorsUp());
         reloadButton = new JoystickButton(coJoystick, 2);
-        reloadButton.whileHeld(new Reload());
-        shootBall = new JoystickButton(coJoystick, 1);
-        shootBall.whileHeld(new PullBackTheCatapultThing());
-        spinOutButton = new JoystickButton(coJoystick, 7);
-        spinOutButton.whileHeld(new SpinPickupArmsOut());
+        reloadButton.whenPressed(new ReleaseTheClam());
+        shootBall = new JoystickButton(coJoystick,  1);
+        shootBall.whenPressed(new PullTheClam());
+        spinOutButton = new JoystickButton(coJoystick, 7);   
+        spinOutButton.whileHeld(new NonPIDCatapultDown());
         spinInButton = new JoystickButton(coJoystick, 8);
-        spinInButton.whileHeld(new SpinPickupArmsIn());
+        spinInButton.whileHeld(new NonPIDCatapultUp());
         lowerButton = new JoystickButton(coJoystick, 5);
         lowerButton.whileHeld(new LowerPickupArms());
         raiseButton = new JoystickButton(coJoystick, 3);

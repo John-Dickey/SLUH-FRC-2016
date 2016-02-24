@@ -1,26 +1,23 @@
 package org.usfirst.frc.team5176.RoboCode421Ez.commands;
 
 import org.usfirst.frc.team5176.RoboCode421Ez.Robot;
-import org.usfirst.frc.team5176.RoboCode421Ez.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class NonPIDCatapultUp extends Command {
-	static double timeout = .1;
-    public NonPIDCatapultUp() {
+public class PullTheCatapultToThePlaceWhereItNeedsToGoToFireMostOfTheTime extends Command {
+	static double triple;
+    public PullTheCatapultToThePlaceWhereItNeedsToGoToFireMostOfTheTime(double triple) {//the name is just for the lolz, it is the timeout
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    }
-    public NonPIDCatapultUp(double tO) {
-    	timeout = tO;
+    	this.triple = triple;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(timeout);
+    	setTimeout(triple);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -41,6 +38,6 @@ public class NonPIDCatapultUp extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    end();
+    	end();
     }
 }

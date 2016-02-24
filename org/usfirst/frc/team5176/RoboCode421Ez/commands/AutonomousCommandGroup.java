@@ -62,8 +62,8 @@ public class AutonomousCommandGroup extends CommandGroup {
     	
     	 //Changed for test so it's a simple drive forward
     	//Just cause I'm too lazy to make a new one
-    	addSequential(new DriveToDefense());  //Changed for test so it's a simple drive backward
-    	addParallel(new SpinPickupArmsIn());
+    	addSequential(new DriveToDefense()); //drive backwards
+    	addParallel(new SpinPickupArmsIn()); //self explanatory \/
     	addSequential(new LowerPickupArms());
     	addParallel(new SpinPickupArmsIn());
     	addSequential(new RaisePickupArms());

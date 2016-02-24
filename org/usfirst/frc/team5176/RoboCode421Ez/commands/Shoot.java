@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Firrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre extends CommandGroup {
+public class Shoot extends CommandGroup {
     
-    public  Firrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre() {
+    public  Shoot() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,8 +24,11 @@ public class Firrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new PullTheClam());
-    	addSequential(new PullTheCatapultToThePlaceWhereItNeedsToGoToFireMostOfTheTime(3));
     	addSequential(new ReleaseTheClam());
+    	addSequential(new ReleaseTheClam());
+    	addSequential(new NonPIDCatapultUp(1.3));
+    	addParallel(new NonPIDCatapultUp(.6));
+    	addSequential(new PullTheClam());
+    	addSequential(new PullTheClam());
     }
 }

@@ -174,24 +174,38 @@ public class Robot extends IterativeRobot {
         
         SmartDashboard.putNumber("Arm position in degrees", Robot.catapultArm.returnVal());
         double[] centX = table.getNumberArray("centerX", defaultValue);
-        if(oi.pilotJoystick.getRawButton(9)) {       	
-        SmartDashboard.putBoolean("button9", true);
-        for(double xxx : centX)
-        {
-        	DriverStation.reportError(xxx + " ", false);
-        	if(xxx > 140) {
-        		Robot.driveTrain.set(-.3, 0);
-        		Timer.delay(.5);
-        		Robot.driveTrain.kidRanIntoTheStreet();
-        	}
-        		//new TurnLeft();
-        	else if(xxx < 120) {
-        		Robot.driveTrain.set(0, .3);
-        		//new TurnRight();
-        		Timer.delay(.5);
-        		Robot.driveTrain.kidRanIntoTheStreet();
+        if(oi.pilotJoystick.getRawButton(9) /*&& RobotMap.driveTrainUltrasonicM.getRangeInches() > 77.5 && RobotMap.driveTrainUltrasonicM.getRangeInches() < 82.5*/) {//arbitrary distance values       	
+        	SmartDashboard.putBoolean("button9", true);
+        	for(double xxx : centX)
+        	{
+        		DriverStation.reportError(xxx + " ", false);
+        		final int TESTNUM = 165;
+        		if(xxx > TESTNUM+25) {
+        			Robot.driveTrain.set(-.3, 0);
+        			Timer.delay(.5);
+        			Robot.driveTrain.kidRanIntoTheStreet();
+        		} else if(xxx > TESTNUM+5) {
+        			Robot.driveTrain.set(-.15, 0);
+        			Timer.delay(.5);
+        			Robot.driveTrain.kidRanIntoTheStreet();
+        		} else if(xxx < TESTNUM-25) {
+        			Robot.driveTrain.set(0, .3);
+        			Timer.delay(.5);
+        			Robot.driveTrain.kidRanIntoTheStreet();
+        		} else if(xxx < TESTNUM-5) {
+        			Robot.driveTrain.set(0, .15);
+        			Timer.delay(.5);
+        			Robot.driveTrain.kidRanIntoTheStreet();
+        		}
         	}
         }
+        if (oi.pilotJoystick.getRawButton(8)) {
+        	double distance = RobotMap.driveTrainUltrasonicM.getRangeInches();
+        	if (distance < 77.5) {
+        		Robot.driveTrain.set(.2 + (80 - distance) * 0.01, -.2 - (80 - distance) * 0.01);
+        	} else {
+        		Robot.driveTrain.set(-.2 - (distance - 80) * 0.01, .2 + (distance - 80) * 0.01);
+        	}
         }
         if(!oi.pilotJoystick.getRawButton(9))
         	SmartDashboard.putBoolean("button9", false);

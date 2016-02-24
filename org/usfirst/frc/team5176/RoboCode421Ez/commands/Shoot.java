@@ -26,7 +26,7 @@ public class Shoot extends CommandGroup {
         // arm.
     	addSequential(new ReleaseTheClam());
     	addSequential(new ReleaseTheClam());
-    	addSequential(new NonPIDCatapultUp(1.3));
+    	addSequential(new NonPIDCatapultUp(.75));
     	addParallel(new NonPIDCatapultUp(.6));
     	addSequential(new PullTheClam());
     	addSequential(new PullTheClam());

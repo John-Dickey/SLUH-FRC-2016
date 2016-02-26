@@ -116,16 +116,8 @@ public class OI {
         SmartDashboard.putData("Lower Pickup Arms", new LowerPickupArms());
         SmartDashboard.putData("Spin Pickup Arms In", new SpinPickupArmsIn());
         SmartDashboard.putData("Spin Pickup Arms Out", new SpinPickupArmsOut());
-        SmartDashboard.putData("Reload", new Reload());
-        SmartDashboard.putData("Scissors Up", new ScissorsUp());
-        SmartDashboard.putData("Scissors Down", new ScissorsDown());
-       // SmartDashboard.putData("Camera Switch", new CameraSwitch());
-        SmartDashboard.putData("Pickup Ball", new PickupBall());
         SmartDashboard.putData("Drive To Defense", new DriveToDefense());
         SmartDashboard.putData("Drive Over Defense", new DriveOverDefense());
-        SmartDashboard.putData("Line Up Shot", new LineUpShot());
-        SmartDashboard.putData("Return to Neutral Zone", new ReturntoNeutralZone());
-        SmartDashboard.putData("Shoot Ball PID", new PullBackTheCatapultThing());
         SmartDashboard.putData("Autonomous Command Group", new AutonomousCommandGroup());
         SmartDashboard.putData("Extra CoPilot Command", new ExtraCoPilotCommand());
         SmartDashboard.putData("Extra Pilot Command 1", new ExtraPilotCommand1());

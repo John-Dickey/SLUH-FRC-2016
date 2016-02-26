@@ -70,7 +70,7 @@ public class AutonomousCommandGroup extends CommandGroup {
     	addSequential(new SpinPickupArmsIn());
     	addSequential(new TurnLeft());
     	addSequential(new DriveToBall());
-    	addSequential(new Firrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre());
+    	addSequential(new Shoot());
     	
  
     } 

@@ -3,13 +3,14 @@
 #define PIN 6
 #define NUMLEDS 30
 #define DELAY 25
-#define VALUE 17
+#define RAINBOWVALUE 17
+#define FADEVALUE 64
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(16, 12 , NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel strip2 = Adafruit_NeoPixel(NUMLEDS, PIN, NEO_GRB + NEO_KHZ800);
 
 int pattern = 1, counter = 0;
-int holder[3] = {255,0,0};
+int holder[3] = {255,0,0}, color[2] = {0,0};
 
 void setup() {
   Serial.begin(9600);
@@ -63,6 +64,58 @@ void loop() {
     } else {
       holder[2] -= VALUE;
       holder[0] += VALUE;
+    }
+  } else if (pattern==3) {
+    int temp[2] = {color[0],color[1]);
+    if (temp[1]>255) {
+      temp[0] -= 1;
+    } else if (temp[1]==0) {
+      temp[0] = (temp[0]-1)%6;
+     }
+    for (int x=0;x<NUMLEDS;x++) {
+      if (temp[0]<2) {
+        strip2.setPixelColor(x, temp[1], 0, 0);
+      } else if (temp[0]>1 && temp[0]<4) {
+        strip2.setPixelColor(x, 0, temp[1], 0);
+      } else {
+        strip2.setPixelColor(x, 0, 0, temp[1]);
+      }
+      if (temp[0]==0) {
+        temp[1] -= FADEVALUE;
+      } else if (temp[0]==1) {
+        temp[1] += FADEVALUE;
+      } else if (temp[0]==2) {
+        temp[1] -= FADEVALUE;
+      } else if (temp[0]==3) {
+        temp[1] += FADEVALUE;
+      } else if (temp[0]==4) {
+        temp[1] -= FADEVALUE;
+      } else {
+        temp[1] += FADEVALUE;
+      }
+      if (temp[1]>255) {
+        temp[0] -= 1;
+      } else if (temp[1]==0) {
+        temp[0] = (temp[0]-1)%6;
+      }
+    }
+    if (color[0]==0) {
+      color[1] += FADEVALUE;
+    } else if (color[0]==1) {
+      color[1] -= FADEVALUE;
+    } else if (color[0]==2) {
+      color[1] += FADEVALUE;
+    } else if (color[0]==3) {
+      color[1] -= FADEVALUE;
+    } else if (color[0]==4) {
+      color[1] += FADEVALUE;
+    } else {
+      color[1] -= FADEVALUE;
+    }
+    if (color[1]>255) {
+      color[0] += 1;
+    } else if (color[1]==0) {
+      color[0] = (color[0]+1)%6;
     }
   }
   strip2.show();

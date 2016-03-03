@@ -66,19 +66,19 @@ void loop() {
       holder[0] += VALUE;
     }
   } else if (pattern==3) {
-    int temp[2] = {color[0],color[1]);
+    int temp[2] = {color[0],color[1]};
     if (temp[1]>255) {
       temp[0] -= 1;
     } else if (temp[1]==0) {
-      temp[0] = (temp[0]-1)%6;
+      temp[0] = (temp[0]+5)%6;
      }
     for (int x=0;x<NUMLEDS;x++) {
       if (temp[0]<2) {
-        strip2.setPixelColor(x, temp[1], 0, 0);
+        strip2.setPixelColor(x, temp[1]-1, 0, 0);
       } else if (temp[0]>1 && temp[0]<4) {
-        strip2.setPixelColor(x, 0, temp[1], 0);
+        strip2.setPixelColor(x, 0, temp[1]-1, 0);
       } else {
-        strip2.setPixelColor(x, 0, 0, temp[1]);
+        strip2.setPixelColor(x, 0, 0, temp[1]-1);
       }
       if (temp[0]==0) {
         temp[1] -= FADEVALUE;
@@ -96,7 +96,7 @@ void loop() {
       if (temp[1]>255) {
         temp[0] -= 1;
       } else if (temp[1]==0) {
-        temp[0] = (temp[0]-1)%6;
+        temp[0] = (temp[0]+5)%6;
       }
     }
     if (color[0]==0) {

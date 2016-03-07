@@ -9,8 +9,8 @@
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(16, 12 , NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel strip2 = Adafruit_NeoPixel(NUMLEDS, PIN, NEO_GRB + NEO_KHZ800);
 
-int pattern = 1, counter = 0;
-int holder[3] = {255,0,0}, color[2] = {0,0};
+int pattern = 1, counter = 0, onStep = 0, pause = 1;
+int holder[3] = {255,0,0}, color[2] = {0,0}, stripData[NUMLEDS];
 
 void setup() {
   Serial.begin(9600);
@@ -22,12 +22,17 @@ void setup() {
   strip.setPixelColor(x, 0, 255, 0);
   }
   strip.show();
+  randomSeed(analogRead(0));
+  for (int x=0;x<NUMLEDS;x++) {
+    stripData[x] = 0;
+    stripData[x] += random(1,4);
+    stripData[x] += random(1,4)*10;
+  }
   strip2.begin();
   strip2.show();
 }
 
 void loop() {
-  //TODO make method to change the patterns
   if (pattern==1) {
     for (int x=0;x<NUMLEDS;x++) {
       if (x<NUMLEDS/3) {
@@ -116,6 +121,25 @@ void loop() {
       color[0] += 1;
     } else if (color[1]==0) {
       color[0] = (color[0]+1)%6;
+    }
+  } else if (pattern==4) {
+    //don't ask me to explain the logic here, it's really complicated
+    for (int x=0;x<NUMLEDS;x++) {
+      strip2.setPixelColor(x, (((((stripData[x]/10)/2)+1)%2)*(255-onStep*VALUE))+((((stripData[x]%10)/2)+1)%2)*onStep*VALUE, ((((stripData[x]/10)+1)%2)*(255-onStep*VALUE))+(((stripData[x]%10)+1)%2)*onStep*VALUE, ((((stripData[x]/10)-1)/2)*(255-onStep*VALUE))+(((stripData[x]%10)-1)/2)*onStep*VALUE);
+    }
+    if (onStep==255/VALUE) {
+      if (pause==100/DELAY) {
+        for (int x=0;x<NUMLEDS;x++) {
+          stripData[x] = (stripData[x]%10)*10;
+          stripData[x] += random(1,4);
+          onStep = 0;
+          pause = 1;
+        } 
+      } else {
+        pause += 1;
+      }
+    } else {
+      onStep += 1;
     }
   }
   strip2.show();
